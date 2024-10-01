@@ -11,11 +11,13 @@ namespace JOIEnergy.Services
 
         private readonly List<PricePlan> _pricePlans;
         private IMeterReadingService _meterReadingService;
+        private readonly IAccountService _acontService;
 
-        public PricePlanService(List<PricePlan> pricePlan, IMeterReadingService meterReadingService)
+        public PricePlanService(List<PricePlan> pricePlan, IMeterReadingService meterReadingService, IAccountService acountService)
         {
             _pricePlans = pricePlan;
             _meterReadingService = meterReadingService;
+            _acontService = acountService;
         }
 
         private decimal calculateAverageReading(List<ElectricityReading> electricityReadings)
@@ -48,7 +50,20 @@ namespace JOIEnergy.Services
             {
                 return new Dictionary<string, decimal>();
             }
-            return _pricePlans.ToDictionary(plan => plan.PlanName, plan => calculateCost(electricityReadings, plan));
+            return _pricePlans.ToDictionary(plan => plan.PlanId, plan => calculateCost(electricityReadings, plan));
         }
-    }
+		
+        public decimal GetAverageLastSevenDaysCost(string smartMeterId)
+        {
+			decimal Cost = 0;
+
+            List<ElectricityReading> eletricReadingFromLastSevenDays = _meterReadingService.GetElectricityReadingsLastSevenDays(smartMeterId);
+
+			string PlanId = _acontService.GetPricePlanIdForSmartMeterId(smartMeterId); 
+
+            PricePlan pricePlan = _pricePlans.SingleOrDefault(p => p.PlanId == PlanId);
+
+			return Cost;
+        }
+	}
 }

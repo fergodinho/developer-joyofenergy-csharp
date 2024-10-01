@@ -26,5 +26,16 @@ namespace JOIEnergy.Services
 
             electricityReadings.ForEach(electricityReading => MeterAssociatedReadings[smartMeterId].Add(electricityReading));
         }
-    }
+		public List<ElectricityReading> GetElectricityReadingsLastSevenDays(string smartMeterId)
+		{
+			List<ElectricityReading> electricityReadings = GetReadings(smartMeterId);
+
+			DateTime dateTimeNow = DateTime.Now;
+			DateTime lastSevenDays = dateTimeNow.AddDays(-7);
+
+			List<ElectricityReading> eletricReadingFromLastSevenDays = electricityReadings.FindAll(c => c.Time >= lastSevenDays && c.Time <= dateTimeNow);
+
+			return eletricReadingFromLastSevenDays;
+		}
+	}
 }

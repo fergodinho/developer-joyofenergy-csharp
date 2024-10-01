@@ -7,7 +7,6 @@ namespace JOIEnergy.Services
     public class AccountService : IAccountService
     { 
         private Dictionary<string, string> _smartMeterToPricePlanAccounts;
-
         public AccountService(Dictionary<string, string> smartMeterToPricePlanAccounts) {
             _smartMeterToPricePlanAccounts = smartMeterToPricePlanAccounts;
         }

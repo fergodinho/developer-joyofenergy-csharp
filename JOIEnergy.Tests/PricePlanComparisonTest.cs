@@ -26,9 +26,9 @@ namespace JOIEnergy.Tests
             var readings = new Dictionary<string, List<Domain.ElectricityReading>>();
             meterReadingService = new MeterReadingService(readings);
             var pricePlans = new List<PricePlan>() { 
-                new PricePlan() { PlanName = PRICE_PLAN_1_ID, UnitRate = 10, PeakTimeMultiplier = NoMultipliers() }, 
-                new PricePlan() { PlanName = PRICE_PLAN_2_ID, UnitRate = 1, PeakTimeMultiplier = NoMultipliers() },
-                new PricePlan() { PlanName = PRICE_PLAN_3_ID, UnitRate = 2, PeakTimeMultiplier = NoMultipliers() } 
+                new PricePlan() { PlanId = PRICE_PLAN_1_ID, UnitRate = 10, PeakTimeMultiplier = NoMultipliers() }, 
+                new PricePlan() { PlanId = PRICE_PLAN_2_ID, UnitRate = 1, PeakTimeMultiplier = NoMultipliers() },
+                new PricePlan() { PlanId = PRICE_PLAN_3_ID, UnitRate = 2, PeakTimeMultiplier = NoMultipliers() } 
             };
             var pricePlanService = new PricePlanService(pricePlans, meterReadingService);
             var smartMeterToPricePlanAccounts = new Dictionary<string, string>

@@ -33,19 +33,19 @@ namespace JOIEnergy
 
             var pricePlans = new List<PricePlan> {
                 new PricePlan{
-                    PlanName = MOST_EVIL_PRICE_PLAN_ID,
+                    PlanId = MOST_EVIL_PRICE_PLAN_ID,
                     EnergySupplier = Enums.Supplier.DrEvilsDarkEnergy,
                     UnitRate = 10m,
                     PeakTimeMultiplier = new List<PeakTimeMultiplier>()
                 },
                 new PricePlan{
-                    PlanName = RENEWABLES_PRICE_PLAN_ID,
+                    PlanId = RENEWABLES_PRICE_PLAN_ID,
                     EnergySupplier = Enums.Supplier.TheGreenEco,
                     UnitRate = 2m,
                     PeakTimeMultiplier = new List<PeakTimeMultiplier>()
                 },
                 new PricePlan{
-                    PlanName = STANDARD_PRICE_PLAN_ID,
+                    PlanId = STANDARD_PRICE_PLAN_ID,
                     EnergySupplier = Enums.Supplier.PowerForEveryone,
                     UnitRate = 1m,
                     PeakTimeMultiplier = new List<PeakTimeMultiplier>()
